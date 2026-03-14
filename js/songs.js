@@ -219,41 +219,38 @@ var SONGS = [
     difficulty: 'Medium',
     tempo: 70,
     notes: [
-      // Key of C major
+      // Key of C major - melody from noobnotes.net
       // "When I find myself in times of trouble"
-      'G4','G4','A4','A4','A4','G4','G4','E4','E4',
+      'G4','G4','G4','G4','A4','E4','G4','G4',
       // "Mother Mary comes to me"
-      'D4','E4','F4','F4','E4','D4','C4',
-      // "Speaking words of wisdom"
-      'G4','G4','A4','A4','G4','E4','D4','C4',
-      // "Let it be"
-      'D4','E4','F4','E4','D4','C4',
+      'C5','D5','E5','E5','E5','D5','D5','C5',
+      // "Speaking words of wisdom, let it be"
+      'C5','E5','E5','F5','E5','E5','D5','E5','D5','D5','C5',
       // Chorus: "Let it be, let it be"
-      'A4','B4','C5','C5','B4','A4',
-      'A4','B4','C5','B4','A4','G4',
+      'E5','D5','C5','E5','G5',
+      // "let it be, let it be"
+      'A5','G5','E5','C5','A4','G4',
       // "Whisper words of wisdom, let it be"
-      'E4','F4','G4','G4','F4','E4','D4','C4'
+      'E5','E5','E5','F5','E5','E5','D5','E5','D5','D5','C5'
     ]
   },
   {
     id: 'imagine',
     title: 'Imagine (John Lennon)',
-    difficulty: 'Medium',
+    difficulty: 'Easy',
     tempo: 70,
     notes: [
-      // Key of C major
+      // Key of C major - melody from noobnotes.net
       // "Imagine there's no heaven"
-      'C4','C4','C4','D4','E4','C4','D4','D4',
+      'E4','G4','E4','G4','B4','B4','A4',
       // "It's easy if you try"
-      'C4','C4','C4','D4','E4','E4','D4',
-      // "No hell below us"
-      'C4','C4','C4','D4','E4','E4',
-      // "Above us only sky"
-      'F4','F4','E4','D4','C4','D4','E4','D4',
-      // "Imagine all the people"
-      'C4','C4','C4','D4','E4','D4','E4','F4','E4',
+      'E4','G4','E4','G4','B4','B4','A4',
+      // "No hell below us, above us only sky"
+      'E4','G4','B4','B4','A4','E4','G4','E4','G4','B4','B4','A4',
+      // Chorus: "Imagine all the people"
+      'A4','C5','A4','C5','E5','E5','D5','C5','A4',
       // "Living for today"
-      'G4','G4','F4','E4','D4','E4'
+      'B4','B4','B4','C5','D5','E5','D5','C5'
     ]
   },
   {
@@ -322,27 +319,25 @@ var SONGS = [
   {
     id: 'hallelujah',
     title: 'Hallelujah (Leonard Cohen)',
-    difficulty: 'Hard',
+    difficulty: 'Medium',
     tempo: 50,
     notes: [
-      // Key of C major
+      // Key of C major - melody from noobnotes.net
       // "I've heard there was a secret chord"
-      'C4','E4','E4','E4','E4','E4','D4','E4','F4',
+      'G4','G4','G4','G4','G4','G4','A4','A4','A4',
       // "That David played and it pleased the Lord"
-      'F4','F4','E4','D4','D4','E4','C4',
-      // "But you don't really care for music, do ya?"
-      'C4','E4','E4','E4','E4','E4','D4','D4','E4','F4',
-      // "It goes like this: the fourth, the fifth"
-      'A4','A4','A4','G4','F4','E4',
+      'E4','G4','G4','G4','G4','A4','E4','E4','A4',
+      // "But you don't really care for music, do ya"
+      'A4','A4','A4','A4','A4','A4','G4','G4','F4','G4','E4',
+      // "It goes like this, the fourth, the fifth"
+      'G4','G4','G4','G4','G4','A4','A4','B4',
       // "The minor fall, the major lift"
-      'A4','A4','A4','G4','F4','E4',
+      'B4','C5','C5','C5','C5','D5','C5','D5',
       // "The baffled king composing Hallelujah"
-      'E4','E4','E4','E4','D4','D4','E4','F4','G4','A4',
-      // Chorus: "Hallelujah" x4
-      'F4','A4','A4','G4',
-      'F4','A4','A4','G4',
-      'F4','A4','A4','G4',
-      'F4','E4','D4','C4'
+      'C5','D5','D5','D5','D5','D5','E5','D5','D5','C5',
+      // Chorus: "Hallelujah" x2
+      'E4','G4','A4','A4','A4','G4','E4','E4',
+      'E4','G4','A4','A4','A4','G4','E4','D4','C4'
     ]
   },
   {
@@ -351,15 +346,21 @@ var SONGS = [
     difficulty: 'Medium',
     tempo: 60,
     notes: [
-      // Key of C major
+      // Key of F major - uses Bb. Melody from noobnotes.net
       // "Wise men say only fools rush in"
-      'E4','F4','G4','C5','B4','A4','G4','F4','E4',
+      'F4','C5','G4','F4','G4','A4','Bb4','A4','G4',
       // "But I can't help falling in love with you"
-      'G4','A4','B4','C5','C5','B4','A4','G4','F4','E4','D4','C4',
-      // "Shall I stay, would it be a sin"
-      'E4','F4','G4','C5','B4','A4','G4','F4','E4',
-      // "If I can't help falling in love with you"
-      'G4','A4','B4','C5','C5','B4','A4','G4','F4','E4','D4','C4'
+      'C4','D4','E4','F4','G4','A4','Bb4','A4','G4','F4',
+      // Bridge: "Like a river flows"
+      'E4','A4','C5','E5','D5',
+      // "Surely to the sea"
+      'E4','A4','C5','E5','D5',
+      // "Some things are meant to be"
+      'C5','A4','C5','A4','Bb4','A4',
+      // "Take my hand, take my whole life too"
+      'F4','C5','F4','G4','A4','Bb4','A4','G4',
+      // "For I can't help falling in love with you"
+      'C4','D4','E4','F4','G4','A4','Bb4','A4','G4','F4'
     ]
   },
   {
@@ -386,42 +387,42 @@ var SONGS = [
     tempo: 75,
     notes: [
       // Key of C major
+      // Melody from noobnotes.net (plays in octave 5)
       // "Sometimes in our lives we all have pain"
-      'C4','C4','D4','E4','F4','E4','D4','D4','E4','F4','G4',
+      'C5','C5','D5','E5','F5','F5','E5','D5',
       // "We all have sorrow"
-      'G4','F4','E4','D4','E4',
+      'C5','C5','D5','E5','E5','D5',
       // "But if we are wise"
-      'C4','D4','E4','F4','E4',
+      'C5','C5','D5','E5','F5',
       // "We know that there's always tomorrow"
-      'D4','E4','F4','G4','G4','F4','E4','D4','C4',
+      'F5','E5','D5','C5','C5','D5','E5','B4','C5',
       // Chorus: "Lean on me when you're not strong"
-      'E4','D4','C4','E4','F4','G4','G4',
-      // "And I'll be your friend, I'll help you carry on"
-      'G4','F4','E4','D4','E4','F4','E4','D4','C4','D4',
-      // "For it won't be long till I'm gonna need"
-      'E4','F4','G4','G4','G4','F4','E4','D4',
+      'E5','D5','C5','E5','E5','D5','D5','C5',
+      // "And I'll be your friend"
+      'C5','C5','B4','A4','G4',
+      // "I'll help you carry on"
+      'C5','D5','E5','E5','C5','D5',
       // "Somebody to lean on"
-      'E4','F4','E4','D4','C4'
+      'E5','D5','C5','C5','B4','C5'
     ]
   },
   {
     id: 'heyjude',
     title: 'Hey Jude (Beatles)',
-    difficulty: 'Medium',
+    difficulty: 'Hard',
     tempo: 65,
     notes: [
-      // Key of F major - uses Bb
+      // Key of F major - uses Bb. Melody from noobnotes.net
       // "Hey Jude, don't make it bad"
-      'C5','A4','A4','G4','F4','G4','A4',
+      'C5','A4','A4','C5','D5','G4',
       // "Take a sad song and make it better"
-      'A4','Bb4','C5','C5','C5','Bb4','A4','G4','A4','G4',
+      'G4','A4','Bb4','F5','F5','E5','C5','D5','C5','Bb4','A4',
       // "Remember to let her into your heart"
-      'G4','A4','G4','F4','G4','A4','Bb4','A4','G4',
+      'C5','D5','D5','D5','G5','F5','E5','F5','D5','C5',
       // "Then you can start to make it better"
-      'G4','F4','G4','A4','Bb4','A4','G4','F4',
-      // Na-na-na ending
-      'F5','E5','D5','C5','D5','E5','F5',
-      'E5','D5','C5','Bb4','A4','G4','F4'
+      'F4','G4','A4','D5','C5','C5','Bb4','A4','E4','F4',
+      // Na-na-na
+      'F4','A4','C5','G5','F5','G5','F5','G5','F5','D5','C5'
     ]
   },
   {
@@ -430,16 +431,17 @@ var SONGS = [
     difficulty: 'Medium',
     tempo: 70,
     notes: [
-      // Key of C major
-      // "Somewhere over the rainbow, way up high"
-      'C4','C5','B4','A4','B4','C5','A4',
-      'F4','G4','A4',
+      // Key of C major - intervals from noobnotes.net
+      // "Somewhere over the rainbow"
+      'C4','C5','B4','G4','A4','B4','C5',
+      // "way up high"
+      'C4','A4','G4',
       // "There's a land that I heard of once in a lullaby"
       'A4','G4','E4','F4','G4','A4','G4',
       'E4','F4','G4','E4','C4',
       // "Somewhere over the rainbow, skies are blue"
-      'C4','C5','B4','A4','B4','C5','A4',
-      'F4','G4','A4',
+      'C4','C5','B4','G4','A4','B4','C5',
+      'C4','A4','G4',
       // "And the dreams that you dare to dream really do come true"
       'A4','G4','E4','F4','G4','A4','B4','C5',
       'C5','B4','A4','G4','A4'
