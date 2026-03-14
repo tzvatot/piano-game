@@ -60,15 +60,22 @@ var UI = (function () {
     songList.innerHTML = '';
     SONGS.forEach(function (song) {
       var totalNotes = song.notes.length * (song.repeat || 1);
+      var diff = song.difficulty.toLowerCase();
       var card = document.createElement('div');
       card.className = 'song-card';
+      card.dataset.difficulty = diff;
       card.innerHTML =
-        '<div class="song-card-info">' +
-          '<span class="song-card-title">' + song.title + '</span>' +
-          '<span class="song-card-meta">' + song.difficulty + ' \u00B7 ' + totalNotes + ' notes</span>' +
-        '</div>' +
-        '<span class="song-card-arrow">\u203A</span>';
-      card.addEventListener('pointerdown', function () {
+        '<div class="song-card-band"></div>' +
+        '<div class="song-card-body">' +
+          '<div class="song-card-title">' + song.title + '</div>' +
+          '<div class="song-card-artist">' + (song.artist || '') + '</div>' +
+          '<div class="song-card-desc">' + (song.desc || '') + '</div>' +
+          '<div class="song-card-footer">' +
+            '<span class="song-card-badge">' + song.difficulty + '</span>' +
+            '<span class="song-card-notes">' + totalNotes + ' notes</span>' +
+          '</div>' +
+        '</div>';
+      card.addEventListener('click', function () {
         PianoAudio.init();
         selectSong(song);
       });

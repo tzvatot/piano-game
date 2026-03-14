@@ -2,6 +2,8 @@ var SONGS = [
   {
     id: 'twinkle',
     title: 'Twinkle Twinkle Little Star',
+    artist: 'Traditional',
+    desc: 'Classic lullaby and children\'s song',
     difficulty: 'Easy',
     tempo: 100,
     notes: [
@@ -16,6 +18,8 @@ var SONGS = [
   {
     id: 'mary',
     title: 'Mary Had a Little Lamb',
+    artist: 'Traditional',
+    desc: 'Popular children\'s nursery rhyme',
     difficulty: 'Easy',
     tempo: 110,
     repeat: 2,
@@ -30,6 +34,8 @@ var SONGS = [
   {
     id: 'hotcross',
     title: 'Hot Cross Buns',
+    artist: 'Traditional',
+    desc: 'Simple English nursery rhyme',
     difficulty: 'Easy',
     tempo: 100,
     repeat: 3,
@@ -43,6 +49,8 @@ var SONGS = [
   {
     id: 'birthday',
     title: 'Happy Birthday',
+    artist: 'Traditional',
+    desc: 'The universal celebration song',
     difficulty: 'Medium',
     tempo: 90,
     repeat: 2,
@@ -56,6 +64,8 @@ var SONGS = [
   {
     id: 'jinglebells',
     title: 'Jingle Bells',
+    artist: 'Traditional',
+    desc: 'Classic Christmas carol favorite',
     difficulty: 'Medium',
     tempo: 130,
     notes: [
@@ -72,6 +82,8 @@ var SONGS = [
   {
     id: 'ode',
     title: 'Ode to Joy',
+    artist: 'Beethoven',
+    desc: 'Famous melody from Symphony No. 9',
     difficulty: 'Medium',
     tempo: 100,
     notes: [
@@ -84,6 +96,8 @@ var SONGS = [
   {
     id: 'london',
     title: 'London Bridge Is Falling Down',
+    artist: 'Traditional',
+    desc: 'English children\'s nursery rhyme',
     difficulty: 'Easy',
     tempo: 110,
     repeat: 2,
@@ -97,6 +111,8 @@ var SONGS = [
   {
     id: 'frere',
     title: 'Are You Sleeping (Fr\u00e8re Jacques)',
+    artist: 'Traditional',
+    desc: 'French children\'s round song',
     difficulty: 'Easy',
     tempo: 110,
     repeat: 2,
@@ -114,6 +130,8 @@ var SONGS = [
   {
     id: 'row',
     title: 'Row Row Row Your Boat',
+    artist: 'Traditional',
+    desc: 'Classic children\'s round melody',
     difficulty: 'Easy',
     tempo: 90,
     repeat: 2,
@@ -127,6 +145,8 @@ var SONGS = [
   {
     id: 'scale',
     title: 'C Major Scale Up and Down',
+    artist: 'Exercise',
+    desc: 'Basic two-octave scale practice',
     difficulty: 'Easy',
     tempo: 90,
     repeat: 3,
@@ -141,6 +161,8 @@ var SONGS = [
   {
     id: 'clocks',
     title: 'Clocks (Coldplay)',
+    artist: 'Coldplay',
+    desc: 'Iconic descending piano arpeggio riff',
     difficulty: 'Hard',
     tempo: 90,
     repeat: 3,
@@ -159,6 +181,8 @@ var SONGS = [
   {
     id: 'scientist',
     title: 'The Scientist (Coldplay)',
+    artist: 'Coldplay',
+    desc: 'Emotional ballad with flowing melody',
     difficulty: 'Medium',
     tempo: 55,
     notes: [
@@ -180,6 +204,8 @@ var SONGS = [
   {
     id: 'fixyou',
     title: 'Fix You (Coldplay)',
+    artist: 'Coldplay',
+    desc: 'Powerful anthem building to chorus',
     difficulty: 'Hard',
     tempo: 55,
     notes: [
@@ -203,6 +229,8 @@ var SONGS = [
   {
     id: 'yellow',
     title: 'Yellow (Coldplay)',
+    artist: 'Coldplay',
+    desc: 'Bright romantic pop guitar melody',
     difficulty: 'Hard',
     tempo: 65,
     repeat: 2,
@@ -225,6 +253,8 @@ var SONGS = [
   {
     id: 'letitbe',
     title: 'Let It Be (Beatles)',
+    artist: 'Beatles',
+    desc: 'Timeless anthem of comfort and peace',
     difficulty: 'Medium',
     tempo: 70,
     notes: [
@@ -246,6 +276,8 @@ var SONGS = [
   {
     id: 'imagine',
     title: 'Imagine (John Lennon)',
+    artist: 'John Lennon',
+    desc: 'Iconic peace anthem in C major',
     difficulty: 'Easy',
     tempo: 70,
     repeat: 2,
@@ -266,6 +298,8 @@ var SONGS = [
   {
     id: 'someonelikeyou',
     title: 'Someone Like You (Adele)',
+    artist: 'Adele',
+    desc: 'Heart-wrenching breakup ballad',
     difficulty: 'Medium',
     tempo: 60,
     notes: [
@@ -287,6 +321,8 @@ var SONGS = [
   {
     id: 'thousandyears',
     title: 'A Thousand Years (Christina Perri)',
+    artist: 'Christina Perri',
+    desc: 'Romantic Twilight saga theme song',
     difficulty: 'Medium',
     tempo: 55,
     notes: [
@@ -308,6 +344,8 @@ var SONGS = [
   {
     id: 'perfect',
     title: 'Perfect (Ed Sheeran)',
+    artist: 'Ed Sheeran',
+    desc: 'Tender wedding dance love song',
     difficulty: 'Medium',
     tempo: 60,
     notes: [
@@ -329,6 +367,8 @@ var SONGS = [
   {
     id: 'hallelujah',
     title: 'Hallelujah (Leonard Cohen)',
+    artist: 'Leonard Cohen',
+    desc: 'Hauntingly beautiful sacred ballad',
     difficulty: 'Medium',
     tempo: 50,
     notes: [
@@ -353,6 +393,8 @@ var SONGS = [
   {
     id: 'canthelp',
     title: "Can't Help Falling in Love (Elvis)",
+    artist: 'Elvis Presley',
+    desc: 'Classic romantic ballad from Blue Hawaii',
     difficulty: 'Medium',
     tempo: 60,
     notes: [
@@ -376,6 +418,8 @@ var SONGS = [
   {
     id: 'riverflows',
     title: 'River Flows in You (Yiruma)',
+    artist: 'Yiruma',
+    desc: 'Delicate flowing piano composition',
     difficulty: 'Hard',
     tempo: 60,
     notes: [
@@ -393,6 +437,8 @@ var SONGS = [
   {
     id: 'leanonme',
     title: 'Lean on Me (Bill Withers)',
+    artist: 'Bill Withers',
+    desc: 'Soulful anthem of friendship',
     difficulty: 'Easy',
     tempo: 75,
     notes: [
@@ -419,6 +465,8 @@ var SONGS = [
   {
     id: 'heyjude',
     title: 'Hey Jude (Beatles)',
+    artist: 'Beatles',
+    desc: 'Epic singalong anthem with na-na coda',
     difficulty: 'Hard',
     tempo: 65,
     notes: [
@@ -438,6 +486,8 @@ var SONGS = [
   {
     id: 'overrainbow',
     title: 'Somewhere Over the Rainbow',
+    artist: 'Harold Arlen',
+    desc: 'Dreamy classic from The Wizard of Oz',
     difficulty: 'Medium',
     tempo: 70,
     notes: [
