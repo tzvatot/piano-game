@@ -72,15 +72,11 @@ var UI = (function () {
       card.className = 'song-card';
       card.dataset.difficulty = diff;
       card.innerHTML =
-        '<div class="song-card-band"></div>' +
-        '<div class="song-card-body">' +
-          '<div class="song-card-title">' + song.title + '</div>' +
-          '<div class="song-card-artist">' + (song.artist || '') + '</div>' +
-          '<div class="song-card-desc">' + (song.desc || '') + '</div>' +
-          '<div class="song-card-footer">' +
-            '<span class="song-card-badge">' + song.difficulty + '</span>' +
-            '<span class="song-card-notes">' + totalNotes + ' notes</span>' +
-          '</div>' +
+        '<div class="song-card-title">' + song.title + '</div>' +
+        '<div class="song-card-meta">' +
+          (song.artist ? '<span class="song-card-artist">' + song.artist + '</span>' : '') +
+          '<span class="song-card-badge">' + song.difficulty + '</span>' +
+          '<span class="song-card-notes">' + totalNotes + ' notes</span>' +
         '</div>';
       card.addEventListener('click', function () {
         if (songClicksBlocked) return;
