@@ -112,9 +112,10 @@ var UI = (function () {
         key.className = 'key-black';
         key.dataset.note = noteName;
 
-        // Calculate left position
+        // Position: centered between the two white keys it sits between
         var whitePos = octIdx * WHITE_NOTES_OCT.length + bk.afterWhite;
-        var leftPct = (whitePos + 1) * whiteKeyWidth - (whiteKeyWidth * 0.35 / 2 + whiteKeyWidth * 0.15);
+        var blackKeyWidthPct = 5.5; // matches CSS .key-black width
+        var leftPct = (whitePos + 1) * whiteKeyWidth - blackKeyWidthPct / 2;
         key.style.left = leftPct + '%';
 
         pianoEl.appendChild(key);
