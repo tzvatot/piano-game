@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Piano Learning Game</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Song Selection Screen -->
+  <div id="screen-selection" class="screen active">
+    <header class="selection-header">
+      <h1>Piano Game</h1>
+      <p class="subtitle">Tap a song to start learning</p>
+    </header>
+    <div id="song-list" class="song-list"></div>
+  </div>
+
+  <!-- Gameplay Screen -->
+  <div id="screen-gameplay" class="screen">
+    <header class="gameplay-header">
+      <button id="btn-exit" class="header-btn" aria-label="Exit">&#x2715;</button>
+      <span id="song-title" class="song-title-display"></span>
+      <div class="progress-container">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+      <button id="btn-pause" class="header-btn" aria-label="Pause">&#x23F8;</button>
+      <button id="btn-restart" class="header-btn" aria-label="Restart">&#x21BB;</button>
+    </header>
+
+    <div id="note-guide" class="note-guide">
+      <span id="note-name" class="note-name"></span>
+    </div>
+
+    <div id="piano" class="piano"></div>
+  </div>
+
+  <!-- Countdown Overlay -->
+  <div id="overlay-countdown" class="overlay hidden">
+    <span id="countdown-number" class="countdown-number"></span>
+  </div>
+
+  <!-- Pause Overlay -->
+  <div id="overlay-pause" class="overlay hidden">
+    <div class="overlay-content">
+      <h2>Paused</h2>
+      <button id="btn-resume" class="overlay-btn">Resume</button>
+      <button id="btn-pause-restart" class="overlay-btn">Restart</button>
+      <button id="btn-pause-exit" class="overlay-btn">Exit</button>
+    </div>
+  </div>
+
+  <!-- Completion Overlay -->
+  <div id="overlay-complete" class="overlay hidden">
+    <div class="overlay-content">
+      <h2>Well done!</h2>
+      <p id="complete-message" class="complete-message"></p>
+      <button id="btn-complete-restart" class="overlay-btn">Play Again</button>
+      <button id="btn-complete-exit" class="overlay-btn">Back to Songs</button>
+    </div>
+  </div>
+
+  <script src="js/audio.js"></script>
+  <script src="js/songs.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
