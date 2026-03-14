@@ -46,6 +46,7 @@ var UI = (function () {
 
     Game.setCallbacks({
       onNoteChange: handleNoteChange,
+      onNoteClear: handleNoteClear,
       onProgress: handleProgress,
       onCountdownTick: handleCountdownTick,
       onCountdownDone: handleCountdownDone,
@@ -188,13 +189,18 @@ var UI = (function () {
   // ── Game Callbacks ──
 
   function handleNoteChange(note, colorClass) {
-    // Format display name: 'Cs4' -> 'C#4', 'Bb4' stays 'Bb4'
+    // Format display: 'Cs4' -> 'C#4', 'Eb5' -> 'Eb5', 'C4' -> 'C4'
     var display = note;
     if (note.length === 3 && note[1] === 's') {
       display = note[0] + '#' + note[2];
     }
     noteNameEl.textContent = display;
     highlightKey(note, colorClass);
+  }
+
+  function handleNoteClear() {
+    clearHighlight();
+    noteNameEl.textContent = '';
   }
 
   function handleProgress(pct) {
