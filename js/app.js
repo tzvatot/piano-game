@@ -269,9 +269,11 @@ var UI = (function () {
     // Demo toggle
     document.getElementById('btn-demo').addEventListener('pointerdown', function (e) {
       e.preventDefault();
+      PianoAudio.init();
       if (Game.getState() === Game.State.DEMO) {
         Game.stopDemo();
       } else {
+        hideAllOverlays();
         Game.demo();
       }
     });
