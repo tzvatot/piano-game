@@ -18,6 +18,7 @@ var SONGS = [
     title: 'Mary Had a Little Lamb',
     difficulty: 'Easy',
     tempo: 110,
+    repeat: 2,
     notes: [
       'E4','D4','C4','D4','E4','E4','E4',
       'D4','D4','D4',
@@ -31,6 +32,7 @@ var SONGS = [
     title: 'Hot Cross Buns',
     difficulty: 'Easy',
     tempo: 100,
+    repeat: 3,
     notes: [
       'E4','D4','C4',
       'E4','D4','C4',
@@ -43,6 +45,7 @@ var SONGS = [
     title: 'Happy Birthday',
     difficulty: 'Medium',
     tempo: 90,
+    repeat: 2,
     notes: [
       'C4','C4','D4','C4','F4','E4',
       'C4','C4','D4','C4','G4','F4',
@@ -83,6 +86,7 @@ var SONGS = [
     title: 'London Bridge Is Falling Down',
     difficulty: 'Easy',
     tempo: 110,
+    repeat: 2,
     notes: [
       'G4','A4','G4','F4','E4','F4','G4',
       'D4','E4','F4','E4','F4','G4',
@@ -95,6 +99,7 @@ var SONGS = [
     title: 'Are You Sleeping (Fr\u00e8re Jacques)',
     difficulty: 'Easy',
     tempo: 110,
+    repeat: 2,
     notes: [
       'C4','D4','E4','C4',
       'C4','D4','E4','C4',
@@ -111,6 +116,7 @@ var SONGS = [
     title: 'Row Row Row Your Boat',
     difficulty: 'Easy',
     tempo: 90,
+    repeat: 2,
     notes: [
       'C4','C4','C4','D4','E4',
       'E4','D4','E4','F4','G4',
@@ -123,6 +129,7 @@ var SONGS = [
     title: 'C Major Scale Up and Down',
     difficulty: 'Easy',
     tempo: 90,
+    repeat: 3,
     notes: [
       'C4','D4','E4','F4','G4','A4','B4','C5',
       'C5','B4','A4','G4','F4','E4','D4','C4'
@@ -136,6 +143,7 @@ var SONGS = [
     title: 'Clocks (Coldplay)',
     difficulty: 'Hard',
     tempo: 90,
+    repeat: 3,
     notes: [
       // Piano riff in Eb major - descending arpeggios
       // Eb major: Eb Bb G
@@ -197,6 +205,7 @@ var SONGS = [
     title: 'Yellow (Coldplay)',
     difficulty: 'Hard',
     tempo: 65,
+    repeat: 2,
     notes: [
       // Key of B major - uses C#, D#, F#, G#
       // "Look at the stars"
@@ -239,6 +248,7 @@ var SONGS = [
     title: 'Imagine (John Lennon)',
     difficulty: 'Easy',
     tempo: 70,
+    repeat: 2,
     notes: [
       // Key of C major - melody from noobnotes.net
       // "Imagine there's no heaven"

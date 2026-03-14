@@ -73,6 +73,16 @@ var Game = (function () {
     }, 800);
   }
 
+  function getTotalNotes() {
+    if (!currentSong) return 0;
+    return currentSong.notes.length * (currentSong.repeat || 1);
+  }
+
+  function getNoteAt(idx) {
+    if (!currentSong) return null;
+    return currentSong.notes[idx % currentSong.notes.length];
+  }
+
   function getBeatDelay() {
     if (!currentSong || !currentSong.tempo) return 0;
     // Half-beat delay: gives rhythm feel without being too slow
@@ -81,7 +91,7 @@ var Game = (function () {
 
   function emitNoteChange() {
     if (onNoteChange && currentSong) {
-      var note = currentSong.notes[noteIndex];
+      var note = getNoteAt(noteIndex);
       var highlightClass = HIGHLIGHT_COLORS[colorIndex % HIGHLIGHT_COLORS.length];
       onNoteChange(note, highlightClass);
     }
@@ -89,7 +99,7 @@ var Game = (function () {
 
   function emitProgress() {
     if (onProgress && currentSong) {
-      var pct = (noteIndex / currentSong.notes.length) * 100;
+      var pct = (noteIndex / getTotalNotes()) * 100;
       onProgress(pct);
     }
   }
@@ -102,14 +112,14 @@ var Game = (function () {
     if (!currentSong) return;
     if (waitingForNext) return; // still waiting for next note to appear
 
-    var expected = currentSong.notes[noteIndex];
+    var expected = getNoteAt(noteIndex);
     if (noteName !== expected && enharmonicOf(noteName) !== expected) return;
 
     // Correct note
     noteIndex++;
     emitProgress();
 
-    if (noteIndex >= currentSong.notes.length) {
+    if (noteIndex >= getTotalNotes()) {
       state = State.COMPLETED;
       if (onProgress) onProgress(100);
       if (onComplete) onComplete(currentSong);
@@ -117,7 +127,7 @@ var Game = (function () {
     }
 
     // Determine color for next note
-    var nextNote = currentSong.notes[noteIndex];
+    var nextNote = getNoteAt(noteIndex);
     if (nextNote === expected) {
       colorIndex++;
     } else {

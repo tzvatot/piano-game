@@ -59,12 +59,13 @@ var UI = (function () {
   function buildSongList() {
     songList.innerHTML = '';
     SONGS.forEach(function (song) {
+      var totalNotes = song.notes.length * (song.repeat || 1);
       var card = document.createElement('div');
       card.className = 'song-card';
       card.innerHTML =
         '<div class="song-card-info">' +
           '<span class="song-card-title">' + song.title + '</span>' +
-          '<span class="song-card-meta">' + song.difficulty + ' \u00B7 ' + song.notes.length + ' notes</span>' +
+          '<span class="song-card-meta">' + song.difficulty + ' \u00B7 ' + totalNotes + ' notes</span>' +
         '</div>' +
         '<span class="song-card-arrow">\u203A</span>';
       card.addEventListener('pointerdown', function () {
@@ -222,7 +223,8 @@ var UI = (function () {
   }
 
   function handleComplete(song) {
-    completeMessage.textContent = 'You played all ' + song.notes.length + ' notes of "' + song.title + '"!';
+    var totalNotes = song.notes.length * (song.repeat || 1);
+    completeMessage.textContent = 'You played all ' + totalNotes + ' notes of "' + song.title + '"!';
     clearHighlight();
     noteNameEl.textContent = '';
     showOverlay('complete');
