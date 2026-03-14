@@ -279,17 +279,17 @@ var SONGS = [
     artist: 'Beatles',
     desc: 'Fun singalong about a yellow submarine',
     difficulty: 'Easy',
-    tempo: 100,
+    tempo: 112,
     notes: [
       // Key of G major
       // Verse: "In the town where I was born"
       'B4','C5','D5','B4','A4','B4','G4',
       // "Lived a man who sailed to sea"
-      'B4','B4','A4','G4','E4','E4','B4','B4','A4',
+      'B4','B4','A4','G4','E4','E4','A4',
       // "And he told us of his life"
       'B4','C5','D5','B4','A4','B4','G4',
       // "In the land of submarines"
-      'B4','B4','A4','G4','E4','E4','B4','B4','A4',
+      'B4','B4','A4','G4','E4','E4','A4',
       // Chorus: "We all live in a yellow submarine"
       'D5','D5','D5','D5','E5','A4','A4','A4','A4','A4',
       // "Yellow submarine, yellow submarine"

@@ -214,23 +214,17 @@ var Game = (function () {
 
     // Half-beat delay (matches game rhythm)
     var beatMs = getBeatDelay();
+    // Hold note for 60% of beat, then clear for 40% (the "halt")
+    var holdMs = Math.round(beatMs * 0.6);
+    var haltMs = beatMs - holdMs;
 
-    if (sameAsNext) {
-      // Repeated note: brief clear gap so each tap is visible
-      noteTimer = setTimeout(function () {
-        if (state === State.DEMO) {
-          if (onNoteClear) onNoteClear();
-          noteTimer = setTimeout(function () {
-            demoStep();
-          }, 60);
-        }
-      }, beatMs - 60);
-    } else {
-      // Different note: just wait then play next
+    noteTimer = setTimeout(function () {
+      if (state !== State.DEMO) return;
+      if (onNoteClear) onNoteClear();
       noteTimer = setTimeout(function () {
         if (state === State.DEMO) demoStep();
-      }, beatMs);
-    }
+      }, haltMs);
+    }, holdMs);
   }
 
   function stopDemo() {
