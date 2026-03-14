@@ -165,6 +165,11 @@ html, body {
 .header-btn:active {
   background: #0f3460;
 }
+#btn-labels {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
 .song-title-display {
   font-size: 14px;
   font-weight: 600;
@@ -276,6 +281,30 @@ html, body {
   transform: translateY(2px);
 }
 
+/* ── Key Labels (Solfège) ── */
+.key-label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 600;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+.key-white .key-label {
+  bottom: 8px;
+  font-size: 11px;
+  color: #333;
+}
+.key-black .key-label {
+  bottom: 6px;
+  font-size: 8px;
+  color: #ddd;
+}
+.piano.hide-labels .key-label {
+  display: none;
+}
+
 /* Highlight colors */
 .highlight-green {
   background: linear-gradient(to bottom, #66BB6A 0%, #4CAF50 50%, #388E3C 100%) !important;
@@ -356,6 +385,11 @@ html, body {
 @media (max-height: 500px) {
   .selection-header { padding: 10px 16px 4px; }
   .selection-header h1 { font-size: 22px; }
+  .song-card-band { height: 6px; }
+  .song-card-body { padding: 8px 10px 10px; gap: 2px; }
+  .song-card-title { font-size: 13px; }
+  .song-card-desc { display: none; }
+  .song-card-footer { margin-top: 4px; }
   .note-guide { min-height: 40px; padding: 4px; }
   .note-name { font-size: 28px; }
   .gameplay-header { padding: 4px 8px; }

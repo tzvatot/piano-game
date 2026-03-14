@@ -274,6 +274,33 @@ var SONGS = [
     ]
   },
   {
+    id: 'yellowsub',
+    title: 'Yellow Submarine (Beatles)',
+    artist: 'Beatles',
+    desc: 'Fun singalong about a yellow submarine',
+    difficulty: 'Easy',
+    tempo: 100,
+    notes: [
+      // Key of G major
+      // Verse: "In the town where I was born"
+      'G4','G4','G4','G4','G4','A4','B4',
+      // "Lived a man who sailed to sea"
+      'B4','B4','B4','B4','A4','G4','A4',
+      // "And he told us of his life"
+      'G4','G4','G4','G4','G4','A4','B4',
+      // "In the land of submarines"
+      'B4','B4','B4','A4','G4','A4',
+      // Chorus: "We all live in a yellow submarine"
+      'D5','D5','D5','D5','D5','D5','D5','C5','B4',
+      // "Yellow submarine, yellow submarine"
+      'D5','D5','D5','C5','B4','D5','D5','D5','C5','B4',
+      // "We all live in a yellow submarine"
+      'D5','D5','D5','D5','D5','D5','D5','C5','B4',
+      // "Yellow submarine, yellow submarine"
+      'D5','D5','D5','C5','B4','D5','D5','D5','C5','B4'
+    ]
+  },
+  {
     id: 'imagine',
     title: 'Imagine (John Lennon)',
     artist: 'John Lennon',
@@ -372,22 +399,24 @@ var SONGS = [
     difficulty: 'Medium',
     tempo: 50,
     notes: [
-      // Key of C major - melody from noobnotes.net
+      // Key of C major
       // "I've heard there was a secret chord"
-      'G4','G4','G4','G4','G4','G4','A4','A4','A4',
+      'C4','E4','E4','G4','G4','G4','G4','A4','A4',
       // "That David played and it pleased the Lord"
-      'E4','G4','G4','G4','G4','A4','E4','E4','A4',
+      'A4','A4','G4','G4','G4','G4','A4','E4',
       // "But you don't really care for music, do ya"
-      'A4','A4','A4','A4','A4','A4','G4','G4','F4','G4','E4',
+      'E4','E4','G4','A4','A4','A4','G4','G4','F4','G4','E4',
       // "It goes like this, the fourth, the fifth"
-      'G4','G4','G4','G4','G4','A4','A4','B4',
+      'E4','G4','G4','G4','G4','A4','A4','B4',
       // "The minor fall, the major lift"
-      'B4','C5','C5','C5','C5','D5','C5','D5',
+      'B4','C5','C5','C5','D5','C5','C5','B4',
       // "The baffled king composing Hallelujah"
-      'C5','D5','D5','D5','D5','D5','E5','D5','D5','C5',
-      // Chorus: "Hallelujah" x2
-      'E4','G4','A4','A4','A4','G4','E4','E4',
-      'E4','G4','A4','A4','A4','G4','E4','D4','C4'
+      'A4','C5','C5','C5','C5','D5','E5','D5','D5','C5',
+      // Chorus: "Hallelujah" x4
+      'F4','A4','A4','A4','G4','E4',
+      'F4','A4','A4','A4','G4','E4',
+      'F4','A4','A4','A4','G4','E4',
+      'E4','G4','A4','A4','G4','E4','D4','C4'
     ]
   },
   {

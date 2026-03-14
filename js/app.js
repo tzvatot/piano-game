@@ -12,6 +12,13 @@ var UI = (function () {
   var highlightedKey = null;
   var highlightedClass = '';
 
+  // Guard: block song clicks briefly after exiting gameplay
+  var songClicksBlocked = false;
+
+  // Solfège mappings
+  var SOLFEGE = { 'C': 'Do', 'D': 'Re', 'E': 'Mi', 'F': 'Fa', 'G': 'Sol', 'A': 'La', 'B': 'Si' };
+  var SOLFEGE_BLACK = { 'Cs': 'Do#', 'Ds': 'Re#', 'Fs': 'Fa#', 'Gs': 'Sol#', 'As': 'La#' };
+
   // Piano layout: 2 octaves C4-B5
   var WHITE_NOTES_OCT = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
   var OCTAVES = [4, 5];
@@ -76,6 +83,7 @@ var UI = (function () {
           '</div>' +
         '</div>';
       card.addEventListener('click', function () {
+        if (songClicksBlocked) return;
         PianoAudio.init();
         selectSong(song);
       });
@@ -106,6 +114,10 @@ var UI = (function () {
         var key = document.createElement('div');
         key.className = 'key-white';
         key.dataset.note = noteName;
+        var label = document.createElement('span');
+        label.className = 'key-label';
+        label.textContent = SOLFEGE[noteLetter];
+        key.appendChild(label);
         pianoEl.appendChild(key);
         keyElements[noteName] = key;
         wireKeyEvents(key, noteName);
@@ -120,6 +132,10 @@ var UI = (function () {
         var key = document.createElement('div');
         key.className = 'key-black';
         key.dataset.note = noteName;
+        var label = document.createElement('span');
+        label.className = 'key-label';
+        label.textContent = SOLFEGE_BLACK[bk.note];
+        key.appendChild(label);
 
         // Position: centered between the two white keys it sits between
         var whitePos = octIdx * WHITE_NOTES_OCT.length + bk.afterWhite;
@@ -240,6 +256,12 @@ var UI = (function () {
   // ── Button Wiring ──
 
   function wireButtons() {
+    // Label toggle
+    document.getElementById('btn-labels').addEventListener('pointerdown', function (e) {
+      e.preventDefault();
+      pianoEl.classList.toggle('hide-labels');
+    });
+
     // Header buttons
     document.getElementById('btn-exit').addEventListener('pointerdown', function (e) {
       e.preventDefault();
@@ -293,7 +315,9 @@ var UI = (function () {
     noteNameEl.textContent = '';
     progressBar.style.width = '0%';
     Game.exit();
+    songClicksBlocked = true;
     showScreen('selection');
+    setTimeout(function () { songClicksBlocked = false; }, 400);
   }
 
   return { init: init };
