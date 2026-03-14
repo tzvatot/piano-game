@@ -1,7 +1,6 @@
 var Game = (function () {
   var State = {
     IDLE: 'IDLE',
-    COUNTDOWN: 'COUNTDOWN',
     PLAYING: 'PLAYING',
     PAUSED: 'PAUSED',
     COMPLETED: 'COMPLETED',
@@ -29,7 +28,6 @@ var Game = (function () {
   var currentSong = null;
   var noteIndex = 0;
   var colorIndex = 0;
-  var countdownTimer = null;
   var noteTimer = null;
   var waitingForNext = false; // true during delay between notes
 
@@ -37,8 +35,6 @@ var Game = (function () {
   var onNoteChange = null;
   var onNoteClear = null;
   var onProgress = null;
-  var onCountdownTick = null;
-  var onCountdownDone = null;
   var onComplete = null;
   var onDemoStart = null;
   var onDemoStop = null;
@@ -47,8 +43,6 @@ var Game = (function () {
     onNoteChange = cbs.onNoteChange || null;
     onNoteClear = cbs.onNoteClear || null;
     onProgress = cbs.onProgress || null;
-    onCountdownTick = cbs.onCountdownTick || null;
-    onCountdownDone = cbs.onCountdownDone || null;
     onComplete = cbs.onComplete || null;
     onDemoStart = cbs.onDemoStart || null;
     onDemoStop = cbs.onDemoStop || null;
@@ -60,22 +54,9 @@ var Game = (function () {
     currentSong = song;
     noteIndex = 0;
     colorIndex = 0;
-    state = State.COUNTDOWN;
-    runCountdown(3);
-  }
-
-  function runCountdown(n) {
-    if (n <= 0) {
-      state = State.PLAYING;
-      if (onCountdownDone) onCountdownDone();
-      emitNoteChange();
-      emitProgress();
-      return;
-    }
-    if (onCountdownTick) onCountdownTick(n);
-    countdownTimer = setTimeout(function () {
-      runCountdown(n - 1);
-    }, 800);
+    state = State.PLAYING;
+    emitNoteChange();
+    emitProgress();
   }
 
   function getTotalNotes() {
@@ -172,7 +153,6 @@ var Game = (function () {
   }
 
   function restart() {
-    clearTimeout(countdownTimer);
     clearTimeout(noteTimer);
     waitingForNext = false;
     if (currentSong) {
@@ -181,7 +161,6 @@ var Game = (function () {
   }
 
   function exit() {
-    clearTimeout(countdownTimer);
     clearTimeout(noteTimer);
     waitingForNext = false;
     state = State.IDLE;
@@ -193,7 +172,6 @@ var Game = (function () {
   function demo() {
     if (!currentSong) return;
     // Stop any current playback
-    clearTimeout(countdownTimer);
     clearTimeout(noteTimer);
     waitingForNext = false;
     noteIndex = 0;
@@ -221,9 +199,12 @@ var Game = (function () {
     PianoAudio.playNote(note);
     emitProgress();
 
-    // Advance color if next note is the same
+    // Check what comes next
     var nextIdx = noteIndex + 1;
-    if (nextIdx < getTotalNotes() && getNoteAt(nextIdx) === note) {
+    var nextNote = nextIdx < getTotalNotes() ? getNoteAt(nextIdx) : null;
+    var sameAsNext = (nextNote === note);
+
+    if (sameAsNext) {
       colorIndex++;
     } else {
       colorIndex = 0;
@@ -231,17 +212,25 @@ var Game = (function () {
 
     noteIndex++;
 
-    // Full beat delay at song tempo
-    var beatMs = Math.round(60000 / currentSong.tempo);
-    noteTimer = setTimeout(function () {
-      if (state === State.DEMO) {
-        if (onNoteClear) onNoteClear();
-        // Short gap between notes for visual clarity
-        noteTimer = setTimeout(function () {
-          demoStep();
-        }, Math.min(beatMs * 0.15, 80));
-      }
-    }, beatMs * 0.85);
+    // Half-beat delay (matches game rhythm)
+    var beatMs = getBeatDelay();
+
+    if (sameAsNext) {
+      // Repeated note: brief clear gap so each tap is visible
+      noteTimer = setTimeout(function () {
+        if (state === State.DEMO) {
+          if (onNoteClear) onNoteClear();
+          noteTimer = setTimeout(function () {
+            demoStep();
+          }, 60);
+        }
+      }, beatMs - 60);
+    } else {
+      // Different note: just wait then play next
+      noteTimer = setTimeout(function () {
+        if (state === State.DEMO) demoStep();
+      }, beatMs);
+    }
   }
 
   function stopDemo() {

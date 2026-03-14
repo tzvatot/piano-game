@@ -2,7 +2,6 @@ var UI = (function () {
   // DOM references
   var screenSelection, screenGameplay;
   var songList, songTitleDisplay, progressBar, noteNameEl, pianoEl;
-  var overlayCountdown, countdownNumber;
   var overlayPause, overlayComplete, completeMessage;
 
   // Key elements mapped by note name (e.g. 'C4' -> <div>)
@@ -41,8 +40,6 @@ var UI = (function () {
     progressBar = document.getElementById('progress-bar');
     noteNameEl = document.getElementById('note-name');
     pianoEl = document.getElementById('piano');
-    overlayCountdown = document.getElementById('overlay-countdown');
-    countdownNumber = document.getElementById('countdown-number');
     overlayPause = document.getElementById('overlay-pause');
     overlayComplete = document.getElementById('overlay-complete');
     completeMessage = document.getElementById('complete-message');
@@ -55,8 +52,6 @@ var UI = (function () {
       onNoteChange: handleNoteChange,
       onNoteClear: handleNoteClear,
       onProgress: handleProgress,
-      onCountdownTick: handleCountdownTick,
-      onCountdownDone: handleCountdownDone,
       onComplete: handleComplete,
       onDemoStart: handleDemoStart,
       onDemoStop: handleDemoStop
@@ -194,16 +189,13 @@ var UI = (function () {
   }
 
   function showOverlay(id) {
-    overlayCountdown.classList.add('hidden');
     overlayPause.classList.add('hidden');
     overlayComplete.classList.add('hidden');
-    if (id === 'countdown') overlayCountdown.classList.remove('hidden');
     if (id === 'pause') overlayPause.classList.remove('hidden');
     if (id === 'complete') overlayComplete.classList.remove('hidden');
   }
 
   function hideAllOverlays() {
-    overlayCountdown.classList.add('hidden');
     overlayPause.classList.add('hidden');
     overlayComplete.classList.add('hidden');
   }
@@ -227,20 +219,6 @@ var UI = (function () {
 
   function handleProgress(pct) {
     progressBar.style.width = pct + '%';
-  }
-
-  function handleCountdownTick(n) {
-    showOverlay('countdown');
-    countdownNumber.textContent = n;
-    // Re-trigger animation
-    countdownNumber.style.animation = 'none';
-    // Force reflow
-    void countdownNumber.offsetWidth;
-    countdownNumber.style.animation = 'pulse 0.6s ease-in-out';
-  }
-
-  function handleCountdownDone() {
-    hideAllOverlays();
   }
 
   function handleComplete(song) {
