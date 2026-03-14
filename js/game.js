@@ -4,7 +4,8 @@ var Game = (function () {
     COUNTDOWN: 'COUNTDOWN',
     PLAYING: 'PLAYING',
     PAUSED: 'PAUSED',
-    COMPLETED: 'COMPLETED'
+    COMPLETED: 'COMPLETED',
+    DEMO: 'DEMO'
   };
 
   var HIGHLIGHT_COLORS = ['highlight-green', 'highlight-yellow', 'highlight-red'];
@@ -39,6 +40,8 @@ var Game = (function () {
   var onCountdownTick = null;
   var onCountdownDone = null;
   var onComplete = null;
+  var onDemoStart = null;
+  var onDemoStop = null;
 
   function setCallbacks(cbs) {
     onNoteChange = cbs.onNoteChange || null;
@@ -47,6 +50,8 @@ var Game = (function () {
     onCountdownTick = cbs.onCountdownTick || null;
     onCountdownDone = cbs.onCountdownDone || null;
     onComplete = cbs.onComplete || null;
+    onDemoStart = cbs.onDemoStart || null;
+    onDemoStop = cbs.onDemoStop || null;
   }
 
   function startSong(song) {
@@ -185,6 +190,75 @@ var Game = (function () {
     colorIndex = 0;
   }
 
+  function demo() {
+    if (!currentSong) return;
+    // Stop any current playback
+    clearTimeout(countdownTimer);
+    clearTimeout(noteTimer);
+    waitingForNext = false;
+    noteIndex = 0;
+    colorIndex = 0;
+    state = State.DEMO;
+    if (onDemoStart) onDemoStart();
+    emitProgress();
+    demoStep();
+  }
+
+  function demoStep() {
+    if (state !== State.DEMO || !currentSong) return;
+    if (noteIndex >= getTotalNotes()) {
+      state = State.COMPLETED;
+      if (onProgress) onProgress(100);
+      if (onNoteClear) onNoteClear();
+      if (onDemoStop) onDemoStop();
+      if (onComplete) onComplete(currentSong);
+      return;
+    }
+
+    var note = getNoteAt(noteIndex);
+    var highlightClass = HIGHLIGHT_COLORS[colorIndex % HIGHLIGHT_COLORS.length];
+    if (onNoteChange) onNoteChange(note, highlightClass);
+    PianoAudio.playNote(note);
+    emitProgress();
+
+    // Advance color if next note is the same
+    var nextIdx = noteIndex + 1;
+    if (nextIdx < getTotalNotes() && getNoteAt(nextIdx) === note) {
+      colorIndex++;
+    } else {
+      colorIndex = 0;
+    }
+
+    noteIndex++;
+
+    // Full beat delay at song tempo
+    var beatMs = Math.round(60000 / currentSong.tempo);
+    noteTimer = setTimeout(function () {
+      if (state === State.DEMO) {
+        if (onNoteClear) onNoteClear();
+        // Short gap between notes for visual clarity
+        noteTimer = setTimeout(function () {
+          demoStep();
+        }, Math.min(beatMs * 0.15, 80));
+      }
+    }, beatMs * 0.85);
+  }
+
+  function stopDemo() {
+    if (state === State.DEMO) {
+      clearTimeout(noteTimer);
+      waitingForNext = false;
+      state = State.PLAYING;
+      noteIndex = 0;
+      colorIndex = 0;
+      if (onNoteClear) onNoteClear();
+      if (onProgress) onProgress(0);
+      if (onDemoStop) onDemoStop();
+      // Restart into normal play mode
+      startSong(currentSong);
+    }
+  }
+
   function getState() {
     return state;
   }
@@ -197,6 +271,8 @@ var Game = (function () {
     pause: pause,
     resume: resume,
     restart: restart,
+    demo: demo,
+    stopDemo: stopDemo,
     exit: exit,
     getState: getState
   };

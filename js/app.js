@@ -57,7 +57,9 @@ var UI = (function () {
       onProgress: handleProgress,
       onCountdownTick: handleCountdownTick,
       onCountdownDone: handleCountdownDone,
-      onComplete: handleComplete
+      onComplete: handleComplete,
+      onDemoStart: handleDemoStart,
+      onDemoStop: handleDemoStop
     });
   }
 
@@ -249,9 +251,31 @@ var UI = (function () {
     showOverlay('complete');
   }
 
+  function handleDemoStart() {
+    var btn = document.getElementById('btn-demo');
+    btn.textContent = '\u25A0'; // square (stop) icon
+    btn.classList.add('demo-active');
+  }
+
+  function handleDemoStop() {
+    var btn = document.getElementById('btn-demo');
+    btn.textContent = '\u25B6'; // play icon
+    btn.classList.remove('demo-active');
+  }
+
   // ── Button Wiring ──
 
   function wireButtons() {
+    // Demo toggle
+    document.getElementById('btn-demo').addEventListener('pointerdown', function (e) {
+      e.preventDefault();
+      if (Game.getState() === Game.State.DEMO) {
+        Game.stopDemo();
+      } else {
+        Game.demo();
+      }
+    });
+
     // Label toggle
     document.getElementById('btn-labels').addEventListener('pointerdown', function (e) {
       e.preventDefault();
@@ -308,6 +332,7 @@ var UI = (function () {
   function doExit() {
     hideAllOverlays();
     clearHighlight();
+    handleDemoStop();
     noteNameEl.textContent = '';
     progressBar.style.width = '0%';
     Game.exit();

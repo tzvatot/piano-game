@@ -148,6 +148,13 @@ html, body {
 .header-btn:active {
   background: #0f3460;
 }
+#btn-demo {
+  font-size: 14px;
+}
+#btn-demo.demo-active {
+  background: #e94560;
+  border-color: #e94560;
+}
 #btn-labels {
   font-size: 10px;
   font-weight: 700;
