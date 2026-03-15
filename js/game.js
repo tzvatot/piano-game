@@ -219,6 +219,11 @@ var Game = (function () {
     var holdMs = Math.round(beatMs * 0.6);
     var haltMs = beatMs - holdMs;
 
+    // Add pause between loop iterations
+    if (currentSong.repeat > 1 && noteIndex < getTotalNotes() && noteIndex % currentSong.notes.length === 0) {
+      haltMs += beatMs * 2;
+    }
+
     noteTimer = setTimeout(function () {
       if (state !== State.DEMO) return;
       if (onNoteClear) onNoteClear();
