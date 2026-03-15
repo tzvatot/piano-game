@@ -190,23 +190,6 @@ var SONGS = [
     ]
   },
   {
-    id: 'fixyou',
-    title: 'Fix You (Coldplay)',
-    artist: 'Coldplay',
-    desc: 'Powerful anthem building to chorus',
-    difficulty: 'Hard',
-    tempo: 55,
-    notes: [
-      'Ab4','Ab4','Ab4','G4','F4','Eb4','F4','G4','Ab4','-',
-      'Ab4','Ab4','Ab4','G4','F4','Eb4','F4','G4','-',
-      'Ab4','Ab4','Ab4','G4','F4','Eb4','G4','-',
-      'Ab4','G4','F4','Eb4','-','-',
-      'Eb5','Eb5','Db5','C5','Bb4','-',
-      'Eb5','Eb5','Db5','C5','Bb4','-',
-      'Bb4','C5','Db5','Eb5','Db5','C5','Bb4'
-    ]
-  },
-  {
     id: 'letitbe',
     title: 'Let It Be (Beatles)',
     artist: 'Beatles',
@@ -214,12 +197,18 @@ var SONGS = [
     difficulty: 'Medium',
     tempo: 70,
     notes: [
-      'G4','G4','G4','G4','A4','E4','G4','G4','-',
-      'C5','D5','E5','E5','E5','D5','D5','C5','-',
-      'C5','E5','E5','F5','E5','E5','D5','E5','D5','D5','C5','-','-',
-      'E5','D5','C5','E5','G5','-',
-      'A5','G5','E5','C5','A4','G4','-',
-      'E5','E5','E5','F5','E5','E5','D5','E5','D5','D5','C5'
+      // "When I find myself in times of trouble"
+      'E4','G4','G4','G4','A4','G4','G4','E4','-',
+      // "Mother Mary comes to me"
+      'G4','A4','C5','C5','B4','A4','G4','-',
+      // "Speaking words of wisdom, let it be"
+      'E5','E5','E5','F5','E5','D5','E5','D5','D5','C5','-','-',
+      // "Let it be, let it be"
+      'E5','D5','C5','-','E5','D5','C5','-',
+      // "let it be, let it be"
+      'E5','D5','C5','-','E5','G5','-',
+      // "Whisper words of wisdom, let it be"
+      'E5','E5','E5','F5','E5','D5','E5','D5','D5','C5'
     ]
   },
   {
