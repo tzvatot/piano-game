@@ -227,30 +227,6 @@ var SONGS = [
     ]
   },
   {
-    id: 'yellow',
-    title: 'Yellow (Coldplay)',
-    artist: 'Coldplay',
-    desc: 'Bright romantic pop guitar melody',
-    difficulty: 'Hard',
-    tempo: 65,
-    repeat: 2,
-    notes: [
-      // Key of B major - uses C#, D#, F#, G#
-      // "Look at the stars"
-      'Cs5','Ds5','Cs5','Ds5',
-      // "Look how they shine for you"
-      'Fs4','Cs5','Fs4','Cs5','B4',
-      // "And everything you do"
-      'Cs5','Fs4','B4','Gs4','B4','Gs4','Fs4',
-      // "I came along"
-      'Cs5','Ds5','Cs5','Ds5',
-      // "I wrote a song for you"
-      'Fs4','Cs5','Cs5','Ds5','Cs5','Ds5',
-      // "And all the things you do"
-      'Fs4','B4','Cs5','Fs4','B4','Gs4','B4','Gs4','Fs4'
-    ]
-  },
-  {
     id: 'letitbe',
     title: 'Let It Be (Beatles)',
     artist: 'Beatles',
@@ -271,33 +247,6 @@ var SONGS = [
       'A5','G5','E5','C5','A4','G4',
       // "Whisper words of wisdom, let it be"
       'E5','E5','E5','F5','E5','E5','D5','E5','D5','D5','C5'
-    ]
-  },
-  {
-    id: 'yellowsub',
-    title: 'Yellow Submarine (Beatles)',
-    artist: 'Beatles',
-    desc: 'Fun singalong about a yellow submarine',
-    difficulty: 'Easy',
-    tempo: 112,
-    notes: [
-      // Key of G major
-      // Verse: "In the town where I was born"
-      'B4','C5','D5','B4','A4','B4','G4',
-      // "Lived a man who sailed to sea"
-      'B4','B4','A4','G4','E4','E4','A4',
-      // "And he told us of his life"
-      'B4','C5','D5','B4','A4','B4','G4',
-      // "In the land of submarines"
-      'B4','B4','A4','G4','E4','E4','A4',
-      // Chorus: "We all live in a yellow submarine"
-      'D5','D5','D5','D5','E5','A4','A4','A4','A4','A4',
-      // "Yellow submarine, yellow submarine"
-      'A4','A4','A4','A4','A4','G4','G4','G4','G4','G4',
-      // "We all live in a yellow submarine"
-      'D5','D5','D5','D5','E5','A4','A4','A4','A4','A4',
-      // "Yellow submarine, yellow submarine"
-      'A4','A4','A4','A4','A4','G4','G4','G4','G4','G4'
     ]
   },
   {
