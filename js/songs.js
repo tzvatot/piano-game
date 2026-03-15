@@ -271,22 +271,6 @@ var SONGS = [
     ]
   },
   {
-    id: 'perfect',
-    title: 'Perfect (Ed Sheeran)',
-    artist: 'Ed Sheeran',
-    desc: 'Tender wedding dance love song',
-    difficulty: 'Medium',
-    tempo: 60,
-    notes: [
-      'B4','B4','B4','A4','G4','B4','-',
-      'B4','B4','B4','A4','G4','B4','C5','B4','A4','G4','-','-',
-      'D5','E5','D5','C5','B4','A4','G4','-',
-      'B4','C5','D5','E5','D5','-',
-      'D5','E5','D5','C5','B4','-',
-      'B4','C5','D5','Fs4','G4','A4','B4','A4','G4'
-    ]
-  },
-  {
     id: 'hallelujah',
     title: 'Hallelujah (Leonard Cohen)',
     artist: 'Leonard Cohen',
