@@ -14,6 +14,12 @@ var UI = (function () {
   // Guard: block song clicks briefly after exiting gameplay
   var songClicksBlocked = false;
 
+  // Free play recording state
+  var isRecording = false;
+  var recording = [];
+  var recordStartTime = 0;
+  var replayTimers = [];
+
   // Solfège mappings
   var SOLFEGE = { 'C': 'Do', 'D': 'Re', 'E': 'Mi', 'F': 'Fa', 'G': 'Sol', 'A': 'La', 'B': 'Si' };
   var SOLFEGE_BLACK = { 'Cs': 'Do#', 'Ds': 'Re#', 'Fs': 'Fa#', 'Gs': 'Sol#', 'As': 'La#' };
@@ -62,6 +68,20 @@ var UI = (function () {
 
   function buildSongList() {
     songList.innerHTML = '';
+
+    // Free Play card
+    var freeCard = document.createElement('div');
+    freeCard.className = 'song-card free-play-card';
+    freeCard.innerHTML =
+      '<div class="song-card-title">Free Play</div>' +
+      '<div class="song-card-meta"><span class="song-card-artist">Play freely, record &amp; save</span></div>';
+    freeCard.addEventListener('click', function () {
+      if (songClicksBlocked) return;
+      PianoAudio.init();
+      selectFreePlay();
+    });
+    songList.appendChild(freeCard);
+
     SONGS.forEach(function (song) {
       var totalNotes = song.notes.length * (song.repeat || 1);
       var diff = song.difficulty.toLowerCase();
@@ -88,6 +108,13 @@ var UI = (function () {
     songTitleDisplay.textContent = song.title;
     showScreen('gameplay');
     Game.startSong(song);
+  }
+
+  function selectFreePlay() {
+    songTitleDisplay.textContent = 'Free Play';
+    screenGameplay.classList.add('free-play');
+    showScreen('gameplay');
+    // Don't call Game.startSong() — just let keys play sounds
   }
 
   // ── Piano Keyboard ──
@@ -154,6 +181,9 @@ var UI = (function () {
     keyEl.addEventListener('pointerdown', function (e) {
       e.preventDefault();
       Game.pressNote(noteName);
+      if (isRecording) {
+        recording.push({ note: noteName, time: performance.now() - recordStartTime });
+      }
     });
   }
 
@@ -296,6 +326,58 @@ var UI = (function () {
       doExit();
     });
 
+    // Free play: Record toggle
+    document.getElementById('btn-record').addEventListener('pointerdown', function (e) {
+      e.preventDefault();
+      var btn = document.getElementById('btn-record');
+      if (isRecording) {
+        isRecording = false;
+        btn.textContent = '\u25CF'; // circle
+        btn.classList.remove('recording-active');
+      } else {
+        cancelReplay();
+        recording = [];
+        recordStartTime = performance.now();
+        isRecording = true;
+        btn.textContent = '\u25A0'; // square (stop)
+        btn.classList.add('recording-active');
+      }
+    });
+
+    // Free play: Replay
+    document.getElementById('btn-play-rec').addEventListener('pointerdown', function (e) {
+      e.preventDefault();
+      if (recording.length === 0) return;
+      cancelReplay();
+      recording.forEach(function (entry) {
+        var tid = setTimeout(function () {
+          PianoAudio.playNote(entry.note);
+          highlightKey(entry.note, 'highlight-green');
+        }, entry.time);
+        replayTimers.push(tid);
+      });
+      // Clear highlight after last note + short delay
+      var lastTime = recording[recording.length - 1].time;
+      var tid = setTimeout(function () { clearHighlight(); }, lastTime + 400);
+      replayTimers.push(tid);
+    });
+
+    // Free play: Save recording as JSON
+    document.getElementById('btn-save-rec').addEventListener('pointerdown', function (e) {
+      e.preventDefault();
+      if (recording.length === 0) return;
+      var json = JSON.stringify(recording);
+      var blob = new Blob([json], { type: 'application/json' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'piano-recording.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+
     // Completion overlay buttons
     document.getElementById('btn-complete-restart').addEventListener('pointerdown', function (e) {
       e.preventDefault();
@@ -309,12 +391,24 @@ var UI = (function () {
     });
   }
 
+  function cancelReplay() {
+    replayTimers.forEach(function (tid) { clearTimeout(tid); });
+    replayTimers = [];
+  }
+
   function doExit() {
     hideAllOverlays();
     clearHighlight();
     handleDemoStop();
     noteNameEl.textContent = '';
     progressBar.style.width = '0%';
+    // Clean up free play state
+    screenGameplay.classList.remove('free-play');
+    isRecording = false;
+    cancelReplay();
+    var btnRec = document.getElementById('btn-record');
+    btnRec.textContent = '\u25CF';
+    btnRec.classList.remove('recording-active');
     Game.exit();
     songClicksBlocked = true;
     showScreen('selection');

@@ -23,16 +23,19 @@
     <header class="gameplay-header">
       <button id="btn-exit" class="header-btn" aria-label="Exit">&#x2715;</button>
       <span id="song-title" class="song-title-display"></span>
-      <div class="progress-container">
+      <div class="progress-container song-only">
         <div id="progress-bar" class="progress-bar"></div>
       </div>
-      <button id="btn-demo" class="header-btn" aria-label="Demo playback">&#x25B6;</button>
+      <button id="btn-demo" class="header-btn song-only" aria-label="Demo playback">&#x25B6;</button>
       <button id="btn-labels" class="header-btn" aria-label="Toggle note labels">ABC</button>
-      <button id="btn-pause" class="header-btn" aria-label="Pause">&#x23F8;</button>
-      <button id="btn-restart" class="header-btn" aria-label="Restart">&#x21BB;</button>
+      <button id="btn-pause" class="header-btn song-only" aria-label="Pause">&#x23F8;</button>
+      <button id="btn-restart" class="header-btn song-only" aria-label="Restart">&#x21BB;</button>
+      <button id="btn-record" class="header-btn free-play-only" aria-label="Record">&#x25CF;</button>
+      <button id="btn-play-rec" class="header-btn free-play-only" aria-label="Replay recording">&#x25B6;</button>
+      <button id="btn-save-rec" class="header-btn free-play-only" aria-label="Save recording">&#x2193;</button>
     </header>
 
-    <div id="note-guide" class="note-guide">
+    <div id="note-guide" class="note-guide song-only">
       <span id="note-name" class="note-name"></span>
     </div>
 

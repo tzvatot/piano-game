@@ -358,6 +358,27 @@ html, body {
   margin-bottom: 8px;
 }
 
+/* ── Free Play Mode ── */
+.free-play-only {
+  display: none !important;
+}
+#screen-gameplay.free-play .free-play-only {
+  display: flex !important;
+}
+#screen-gameplay.free-play .song-only {
+  display: none !important;
+}
+#btn-record.recording-active {
+  background: #e94560;
+  border-color: #e94560;
+}
+.free-play-card {
+  border-left-color: #2196F3 !important;
+}
+.free-play-card .song-card-artist::after {
+  display: none;
+}
+
 /* ── Responsive ── */
 @media (max-height: 500px) {
   .selection-header { padding: 6px 16px 4px; }
