@@ -201,6 +201,7 @@ var UI = (function () {
     clearHighlight();
     var el = keyElements[noteName];
     if (!el) return;
+    void el.offsetHeight; // force reflow so repeated highlights on same key are visible
     el.classList.add(colorClass);
     highlightedKey = el;
     highlightedClass = colorClass;
