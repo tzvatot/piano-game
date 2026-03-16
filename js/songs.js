@@ -159,6 +159,31 @@ var SONGS = [
   // ── Pop Songs ──
 
   {
+    id: 'whatislove',
+    title: 'What Is Love (Haddaway)',
+    artist: 'Haddaway',
+    desc: 'Iconic 90s Eurodance anthem',
+    difficulty: 'Easy',
+    tempo: 120,
+    repeat: 2,
+    notes: [
+      // "What is love?"
+      'D4','D4','D4','F4','-',
+      // "Baby don't hurt me"
+      'F4','E4','D4','C4','D4','-',
+      // "Don't hurt me"
+      'D4','E4','F4','-',
+      // "No more"
+      'E4','D4','-','-',
+      // "What is love?"
+      'D4','D4','D4','F4','-',
+      // "Baby don't hurt me"
+      'F4','E4','D4','C4','D4','-',
+      // "Don't hurt me, no more"
+      'D4','E4','F4','E4','D4'
+    ]
+  },
+  {
     id: 'clocks',
     title: 'Clocks (Coldplay)',
     artist: 'Coldplay',
